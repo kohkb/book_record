@@ -18,7 +18,7 @@ func (h *BooksHandler) GetAll(c *gin.Context) {
 	c.JSON(http.StatusOK, books)
 }
 
-func (h *BooksHandler) CreateTask(c *gin.Context) {
+func (h *BooksHandler) CreateBook(c *gin.Context) {
 	book := models.Book{}
 	err := c.BindJSON(&book)
 	if err != nil {
@@ -31,14 +31,14 @@ func (h *BooksHandler) CreateTask(c *gin.Context) {
 	c.JSON(http.StatusOK, &book)
 }
 
-func (h *BooksHandler) EditTask(c *gin.Context) {
+func (h *BooksHandler) EditBook(c *gin.Context) {
 	book := models.Book{}
 	id := c.Param("id")
 	h.Db.First(&book, id)
 	c.JSON(http.StatusOK, book)
 }
 
-func (h *BooksHandler) UpdateTask(c *gin.Context) {
+func (h *BooksHandler) UpdateBook(c *gin.Context) {
 	book := models.Book{}
 	id := c.Param("id")
 	h.Db.First(&book, id)
@@ -52,7 +52,7 @@ func (h *BooksHandler) UpdateTask(c *gin.Context) {
 	c.JSON(http.StatusOK, &book)
 }
 
-func (h *BooksHandler) DeleteTask(c *gin.Context) {
+func (h *BooksHandler) DeleteBook(c *gin.Context) {
 	book := models.Book{}
 	id := c.Param("id")
 	h.Db.First(&book, id)

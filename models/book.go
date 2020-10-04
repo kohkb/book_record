@@ -4,6 +4,7 @@ import "github.com/jinzhu/gorm"
 
 type Book struct {
 	gorm.Model
-	Title  string
-	Status uint64
+	Title    string
+	Category uint64
+	Status   uint64
 }

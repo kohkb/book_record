@@ -28,20 +28,21 @@ func Router(dbConn *gorm.DB) {
 	}))
 	r.LoadHTMLGlob("templates/*")
 	r.GET("/books", booksHandler.GetAll)
-	r.POST("/books", booksHandler.CreateTask)
-	r.GET("/books/:id", booksHandler.EditTask)
-	r.POST("/books/edit/:id", booksHandler.UpdateTask)
-	r.POST("/books/delete/:id", booksHandler.DeleteTask)
+	r.GET("/books/new", booksHandler.NewBook)
+	r.POST("/books/new", booksHandler.CreateBook)
+	r.GET("/books/edit/:id", booksHandler.EditBook)
+	r.POST("/books/edit/:id", booksHandler.UpdateBook)
+	r.POST("/books/delete/:id", booksHandler.DeleteBook)
 	apiV1 := r.Group("/api/v1")
 	{
 		apiBooksHandler := v1.BooksHandler{
 			Db: dbConn,
 		}
 		apiV1.GET("/books", apiBooksHandler.GetAll)
-		apiV1.POST("/books", apiBooksHandler.CreateTask)
-		apiV1.GET("/books/:id", apiBooksHandler.EditTask)
-		apiV1.PUT("/books/:id", apiBooksHandler.UpdateTask)
-		apiV1.DELETE("/books/:id", apiBooksHandler.DeleteTask)
+		apiV1.POST("/books", apiBooksHandler.CreateBook)
+		apiV1.GET("/books/:id", apiBooksHandler.EditBook)
+		apiV1.PUT("/books/:id", apiBooksHandler.UpdateBook)
+		apiV1.DELETE("/books/:id", apiBooksHandler.DeleteBook)
 	}
 
 	r.Run()

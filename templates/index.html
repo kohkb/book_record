@@ -1,0 +1,61 @@
+{{template "header" .}}
+<div class="card mb-3">
+    <div class="card-header">
+        <span class="h4">本一覧</span>
+        <a href="/books/new" class="btn btn-primary float-right" >新規追加</a>
+    </div>
+    <div class="card-body">
+        <table class="table table-responsive-sm">
+            <form method="post" id="frmDelete">
+                <thead>
+                    <tr>
+                        <th>タイトル</th>
+                        <th>カテゴリ</th>
+                        <th>ステータス</th>
+                        <th>コメント</th>                                    
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{range .books}}
+                        <tr>
+                            <td>{{.Title}}</td>
+                            <td>
+                                {{if eq .Category 1}}
+                                実用書
+                                {{else if eq .Category 2}}
+                                専門書
+                                {{else if eq .Category 3}}
+                                その他
+                                {{end}}
+                            </td>
+                            <td>
+                                {{if eq .Status 1}}
+                                未対応
+                                {{else if eq .Status 2}}
+                                対応中
+                                {{else if eq .Status 3}}
+                                完了
+                                {{end}}
+                            </td>
+                            <td>面白かった</td>
+                            <td>
+                                <a href="/books/edit/{{.ID}}" class="btn btn-light">編集</a>
+                                <a href="javascript:void(0);" data-id="{{.ID}}" class="delete btn btn-warning">削除</a>
+                            </td>
+                        </tr>
+                    {{end}}
+                </tbody>
+            </form>
+        </table>
+    </div>
+</div>
+<script>
+$(function(){
+    $('.delete').on('click', function(){
+        $('#frmDelete').attr('action', '/books/delete/' + $(this).data('id'))
+        $('#frmDelete').submit()
+    })
+})
+</script>
+{{template "footer"}}

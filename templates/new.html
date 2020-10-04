@@ -1,0 +1,32 @@
+{{template "header" .}}
+<div class="card">
+    <div class="card-header">
+        <h4 class="mb-0">本の追加</h4>
+    </div>
+    <div class="card-body">
+        <form action="/books/new" method="POST">
+            <div class="form-group row">
+                <label class="col-md-2">タイトル</label>
+                <input class="form-control col-md-2" type="text" name="title" value="">
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label">カテゴリ</label>
+                <select class="form-control col-md-2" name="category" id="">
+                    <option value="1">実用書</option>
+                    <option value="2">専門書</option>
+                    <option value="3">その他</option>
+                </select>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label">ステータス</label>
+                <select class="form-control col-md-2" name="status" id="">
+                    <option value="1">未対応</option>
+                    <option value="2">対応中</option>
+                    <option value="3">完了</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">送信</button>
+        </form>
+    </div>
+</div>
+{{template "footer"}}
