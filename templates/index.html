@@ -31,11 +31,11 @@
                             </td>
                             <td width="10%">
                                 {{if eq .Status 1}}
-                                未対応
+                                TOREAD
                                 {{else if eq .Status 2}}
-                                対応中
+                                READING
                                 {{else if eq .Status 3}}
-                                完了
+                                DONE
                                 {{end}}
                             </td>
                             <td width="45%">{{.Comment}}</td>

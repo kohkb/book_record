@@ -11,7 +11,7 @@
             </div>
             <div class="form-group row">
                 <label class="col-md-2 col-form-label">カテゴリ</label>
-                <select class="form-control col-md-1" name="category" id="">
+                <select class="form-control col-md-2" name="category" id="">
                     <option value="1" {{if eq .book.Category 1}}selected{{end}}>実用書</option>
                     <option value="2" {{if eq .book.Category 2}}selected{{end}}>専門書</option>
                     <option value="3" {{if eq .book.Category 3}}selected{{end}}>その他</option>
@@ -19,10 +19,10 @@
             </div>
             <div class="form-group row">
                 <label class="col-md-2 col-form-label">ステータス</label>
-                <select class="form-control col-md-1" name="status" id="">
-                    <option value="1" {{if eq .book.Status 1}}selected{{end}}>未対応</option>
-                    <option value="2" {{if eq .book.Status 2}}selected{{end}}>対応中</option>
-                    <option value="3" {{if eq .book.Status 3}}selected{{end}}>完了</option>
+                <select class="form-control col-md-2" name="status" id="">
+                    <option value="1" {{if eq .book.Status 1}}selected{{end}}>TOREAD</option>
+                    <option value="2" {{if eq .book.Status 2}}selected{{end}}>READING</option>
+                    <option value="3" {{if eq .book.Status 3}}selected{{end}}>DONE</option>
                 </select>           
             </div>
             <div class="form-group row">
