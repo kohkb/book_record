@@ -7,4 +7,5 @@ type Book struct {
 	Title    string
 	Category uint64
 	Status   uint64
+	Comment  string
 }

@@ -1,17 +1,17 @@
 {{template "header" .}}
 <div class="card">
     <div class="card-header">
-        <h4 class="mb-0">本の追加</h4>
+        <h4 class="mb-0">本の編集</h4>
     </div>
     <div class="card-body">
         <form action="/books/edit/{{.book.ID}}" method="POST">
             <div class="form-group row">
                 <label class="col-md-2">タイトル</label>
-                <input class="form-control col-md-2" type="text" name="title" value="{{.book.Title}}">
+                <input class="form-control col-md-4" type="text" name="title" value="{{.book.Title}}">
             </div>
             <div class="form-group row">
                 <label class="col-md-2 col-form-label">カテゴリ</label>
-                <select class="form-control col-md-2" name="category" id="">
+                <select class="form-control col-md-1" name="category" id="">
                     <option value="1" {{if eq .book.Category 1}}selected{{end}}>実用書</option>
                     <option value="2" {{if eq .book.Category 2}}selected{{end}}>専門書</option>
                     <option value="3" {{if eq .book.Category 3}}selected{{end}}>その他</option>
@@ -19,11 +19,15 @@
             </div>
             <div class="form-group row">
                 <label class="col-md-2 col-form-label">ステータス</label>
-                <select class="form-control col-md-2" name="status" id="">
+                <select class="form-control col-md-1" name="status" id="">
                     <option value="1" {{if eq .book.Status 1}}selected{{end}}>未対応</option>
                     <option value="2" {{if eq .book.Status 2}}selected{{end}}>対応中</option>
                     <option value="3" {{if eq .book.Status 3}}selected{{end}}>完了</option>
                 </select>           
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label">コメント</label>
+                <textarea class="form-control col-md-6" name="comment" rows="5">{{.book.Comment}}</textarea>
             </div>
             <button type="submit" class="btn btn-primary" value="更新">送信</button>
         </form>

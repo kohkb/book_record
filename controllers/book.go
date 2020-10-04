@@ -29,9 +29,10 @@ func (h *BooksHandler) CreateBook(c *gin.Context) {
 	title, _ := c.GetPostForm("title")
 	category, _ := c.GetPostForm("category")
 	status, _ := c.GetPostForm("status")
+	comment, _ := c.GetPostForm("comment")
 	icategory, _ := strconv.ParseUint(category, 10, 32)
 	istatus, _ := strconv.ParseUint(status, 10, 32)
-	h.Db.Create(&models.Book{Title: title, Category: icategory, Status: istatus})
+	h.Db.Create(&models.Book{Title: title, Category: icategory, Status: istatus, Comment: comment})
 	c.Redirect(http.StatusMovedPermanently, "/books")
 }
 
@@ -49,12 +50,14 @@ func (h *BooksHandler) UpdateBook(c *gin.Context) {
 	title, _ := c.GetPostForm("title")
 	category, _ := c.GetPostForm("category")
 	status, _ := c.GetPostForm("status")
+	comment, _ := c.GetPostForm("comment")
 	icategory, _ := strconv.ParseUint(category, 10, 32)
 	istatus, _ := strconv.ParseUint(status, 10, 32)
 	h.Db.First(&Book, id)
 	Book.Title = title
 	Book.Category = icategory
 	Book.Status = istatus
+	Book.Comment = comment
 	h.Db.Save(&Book)
 	c.Redirect(http.StatusMovedPermanently, "/books")
 }

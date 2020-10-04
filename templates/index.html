@@ -9,18 +9,18 @@
             <form method="post" id="frmDelete">
                 <thead>
                     <tr>
-                        <th>タイトル</th>
-                        <th>カテゴリ</th>
-                        <th>ステータス</th>
-                        <th>コメント</th>                                    
-                        <th></th>
+                        <th width="20%">タイトル</th>
+                        <th width="10%">カテゴリ</th>
+                        <th width="10%">ステータス</th>
+                        <th width="45%">コメント</th>                                    
+                        <th width="15%"></th>
                     </tr>
                 </thead>
                 <tbody>
                     {{range .books}}
                         <tr>
-                            <td>{{.Title}}</td>
-                            <td>
+                            <td width="20%">{{.Title}}</td>
+                            <td width="10%">
                                 {{if eq .Category 1}}
                                 実用書
                                 {{else if eq .Category 2}}
@@ -29,7 +29,7 @@
                                 その他
                                 {{end}}
                             </td>
-                            <td>
+                            <td width="10%">
                                 {{if eq .Status 1}}
                                 未対応
                                 {{else if eq .Status 2}}
@@ -38,8 +38,8 @@
                                 完了
                                 {{end}}
                             </td>
-                            <td>面白かった</td>
-                            <td>
+                            <td width="45%">{{.Comment}}</td>
+                            <td width="15%">
                                 <a href="/books/edit/{{.ID}}" class="btn btn-light">編集</a>
                                 <a href="javascript:void(0);" data-id="{{.ID}}" class="delete btn btn-warning">削除</a>
                             </td>
